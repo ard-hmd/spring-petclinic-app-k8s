@@ -6,7 +6,7 @@ metadata:
   labels:
     app: customers-service
   name: customers-service
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -19,7 +19,7 @@ spec:
         app: customers-service
     spec:
       containers:
-      - image: ardhmd/spring-petclinic-cloud-customers-service:latest
+      - image: {{ .Values.repository_prefix }}/spring-petclinic-cloud-customers-service:latest
         name: customers-service
         imagePullPolicy: Always
         livenessProbe:

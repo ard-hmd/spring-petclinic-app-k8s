@@ -5,7 +5,7 @@ metadata:
   labels:
     app: vets-service
   name: vets-service
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
         app: vets-service
     spec:
       containers:
-      - image: ardhmd/spring-petclinic-cloud-vets-service:latest
+      - image: {{ .Values.repository_prefix }}/spring-petclinic-cloud-vets-service:latest
         name: vets-service
         imagePullPolicy: Always
         livenessProbe:

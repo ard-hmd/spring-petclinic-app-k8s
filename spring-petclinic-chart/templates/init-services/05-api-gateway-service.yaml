@@ -5,7 +5,7 @@ metadata:
   labels:
     app: api-gateway
   name: api-gateway
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - name: "http"

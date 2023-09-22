@@ -1,7 +1,7 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
   name: namespace-reader
 rules:
   - apiGroups: ["", "extensions", "apps"]
@@ -14,7 +14,7 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: namespace-reader-binding
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 subjects:
 - kind: ServiceAccount
   name: default

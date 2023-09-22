@@ -5,7 +5,7 @@ metadata:
   labels:
     app: vets-service
   name: vets-service
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 spec:
   ports:
   - name: "http"

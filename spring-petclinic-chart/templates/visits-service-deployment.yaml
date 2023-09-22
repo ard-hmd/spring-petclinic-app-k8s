@@ -5,7 +5,7 @@ metadata:
   labels:
     app: visits-service
   name: visits-service
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
         app: visits-service
     spec:
       containers:
-      - image: ardhmd/spring-petclinic-cloud-visits-service:latest
+      - image: {{ .Values.repository_prefix }}/spring-petclinic-cloud-visits-service:latest
         name: visits-service
         imagePullPolicy: Always
         livenessProbe:

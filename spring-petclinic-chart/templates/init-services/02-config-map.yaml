@@ -3,7 +3,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: petclinic-config
-  namespace: spring-petclinic
+  namespace: {{ .Values.namespace }}
 data:
   application.yaml: |-
     server:
@@ -52,8 +52,8 @@ data:
           wavefront:
             enabled: true
 
-    customers-service-id: http://customers-service.spring-petclinic.svc.cluster.local:8080
-    visits-service-id: http://vists-service.spring-petclinic.svc.cluster.local:8080
+    customers-service-id: http://customers-service.{{ .Values.namespace }}.svc.cluster.local:8080
+    visits-service-id: http://visits-service.{{ .Values.namespace }}.svc.cluster.local:8080
 
     spring:
       datasource:
@@ -94,19 +94,19 @@ data:
             proto-append: false
           routes:
             - id: vets-service
-              uri: http://vets-service.spring-petclinic.svc.cluster.local:8080
+              uri: http://vets-service.{{ .Values.namespace }}.svc.cluster.local:8080
               predicates:
                 - Path=/api/vet/**
               filters:
                 - StripPrefix=2
             - id: visits-service
-              uri: http://visits-service.spring-petclinic.svc.cluster.local:8080
+              uri: http://visits-service.{{ .Values.namespace }}.svc.cluster.local:8080
               predicates:
                 - Path=/api/visit/**
               filters:
                 - StripPrefix=2
             - id: customers-service
-              uri: http://customers-service.spring-petclinic.svc.cluster.local:8080
+              uri: http://customers-service.{{ .Values.namespace }}.svc.cluster.local:8080
               predicates:
                 - Path=/api/customer/**
               filters:

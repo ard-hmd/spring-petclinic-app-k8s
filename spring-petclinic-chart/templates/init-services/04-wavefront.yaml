@@ -7,7 +7,7 @@
 #    app: wavefront-proxy
 #    name: wavefront-proxy
 #  name: wavefront-proxy
-#  namespace: spring-petclinic
+#  namespace: {{ .Values.namespace }}
 #spec:
 #  replicas: 1
 #  selector:
@@ -51,7 +51,7 @@
 #  name: wavefront-proxy
 #  labels:
 #    app: wavefront-proxy
-#  namespace: spring-petclinic
+#  namespace: {{ .Values.namespace }}
 #spec:
 #  ports:
 #  - name: wavefront
