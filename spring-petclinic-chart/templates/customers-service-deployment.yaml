@@ -48,9 +48,9 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: kubernetes
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://customersdb.c6wqjjevzbkj.eu-west-3.rds.amazonaws.com:3306/customersdb?queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor&zipkinServiceName=customers-db
+          value: jdbc:mysql://{{ .Values.dbname_customers }}.{{ .Values.dbhost_customers }}/{{ .Values.dbname_customers }}?queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor&zipkinServiceName=customers-db
         - name: SPRING_DATASOURCE_USERNAME
-          value: admin
+          value: {{ .Values.dbuser_customers }}
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
              secretKeyRef:

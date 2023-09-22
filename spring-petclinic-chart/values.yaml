@@ -1,2 +1,14 @@
 namespace: ""
 repository_prefix: ""
+
+dbhost_visits: c6wqjjevzbkj.eu-west-3.rds.amazonaws.com:3306
+dbname_visits: visitsdb
+dbuser_visits: admin
+
+dbhost_customers: c6wqjjevzbkj.eu-west-3.rds.amazonaws.com:3306
+dbname_customers: customersdb
+dbuser_customers: admin
+
+dbhost_vets: c6wqjjevzbkj.eu-west-3.rds.amazonaws.com:3306
+dbname_vets: vetsdb
+dbuser_vets: admin

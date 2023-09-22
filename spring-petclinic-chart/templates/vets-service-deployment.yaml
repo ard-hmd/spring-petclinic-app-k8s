@@ -47,9 +47,9 @@ spec:
         - name: SPRING_PROFILES_ACTIVE
           value: kubernetes
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://vetsdb.c6wqjjevzbkj.eu-west-3.rds.amazonaws.com:3306/vetsdb?queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor&zipkinServiceName=vets-db
+          value: jdbc:mysql://{{ .Values.dbname_vets }}.{{ .Values.dbhost_vets }}/{{ .Values.dbname_vets }}?queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor&zipkinServiceName=vets-db
         - name: SPRING_DATASOURCE_USERNAME
-          value: admin
+          value: {{ .Values.dbuser_vets }}
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
              secretKeyRef:
