@@ -5,7 +5,7 @@ metadata:
   labels:
     app: visits-service
   name: visits-service
-  namespace: {{ .Values.namespace }}
+  namespace: spring-petclinic
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
         app: visits-service
     spec:
       containers:
-      - image: {{ .Values.repository_prefix }}/spring-petclinic-cloud-visits-service:latest
+      - image: ardhmd/spring-petclinic-cloud-visits-service:latest
         name: visits-service
         imagePullPolicy: Always
         livenessProbe:
@@ -55,6 +55,8 @@ spec:
              secretKeyRef:
                name: visits-db-mysql
                key: mysql-root-password
+        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
+          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878
         ports:
         - containerPort: 8080
         resources: {}

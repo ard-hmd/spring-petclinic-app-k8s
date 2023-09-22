@@ -5,7 +5,7 @@ metadata:
   labels:
     app: vets-service
   name: vets-service
-  namespace: {{ .Values.namespace }}
+  namespace: spring-petclinic
 spec:
   replicas: 1
   selector:
@@ -18,7 +18,7 @@ spec:
         app: vets-service
     spec:
       containers:
-      - image: {{ .Values.repository_prefix }}/spring-petclinic-cloud-vets-service:latest
+      - image: ardhmd/spring-petclinic-cloud-vets-service:latest
         name: vets-service
         imagePullPolicy: Always
         livenessProbe:
@@ -55,6 +55,8 @@ spec:
              secretKeyRef:
                name: vets-db-mysql
                key: mysql-root-password
+        - name: MANAGEMENT_METRICS_EXPORT_WAVEFRONT_URI
+          value: proxy://wavefront-proxy.spring-petclinic.svc.cluster.local:2878
         ports:
         - containerPort: 8080
         resources: {}
