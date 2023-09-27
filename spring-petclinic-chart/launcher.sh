@@ -22,6 +22,12 @@ helm install spring-resources chart-resources \
 	--set dbhost_customers=$DBHOST \
 	--set dbhost_vets=$DBHOST \
 	--set dbhost_visits=$DBHOST \
+	--set dbname_visits=visitsdb \
+	--set dbuser_visits=admin \
+	--set dbname_customers=customersdb \
+	--set dbuser_customers=admin \
+	--set dbname_vets=vetsdb \
+	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
 echo "pause for 10sec for the resources to be online before deploying the microservices"
@@ -33,7 +39,12 @@ helm install spring-api-gateway chart-api-gateway \
 	--set dbhost_customers=$DBHOST \
 	--set dbhost_vets=$DBHOST \
 	--set dbhost_visits=$DBHOST \
-	--values values.yaml \
+	--set dbname_visits=visitsdb \
+	--set dbuser_visits=admin \
+	--set dbname_customers=customersdb \
+	--set dbuser_customers=admin \
+	--set dbname_vets=vetsdb \
+	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
 helm install spring-customers chart-customers \
@@ -42,7 +53,12 @@ helm install spring-customers chart-customers \
 	--set dbhost_customers=$DBHOST \
 	--set dbhost_vets=$DBHOST \
 	--set dbhost_visits=$DBHOST \
-	--values values.yaml \
+	--set dbname_visits=visitsdb \
+	--set dbuser_visits=admin \
+	--set dbname_customers=customersdb \
+	--set dbuser_customers=admin \
+	--set dbname_vets=vetsdb \
+	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 	
 helm install spring-vets chart-vets \
@@ -51,7 +67,12 @@ helm install spring-vets chart-vets \
 	--set dbhost_customers=customersdb.$DBHOST \
 	--set dbhost_vets=vetsdb.$DBHOST \
 	--set dbhost_visits=visitsdb.$DBHOST \
-	--values values.yaml \
+	--set dbname_visits=visitsdb \
+	--set dbuser_visits=admin \
+	--set dbname_customers=customersdb \
+	--set dbuser_customers=admin \
+	--set dbname_vets=vetsdb \
+	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
 helm install spring-visits chart-visits \
@@ -60,7 +81,12 @@ helm install spring-visits chart-visits \
 	--set dbhost_customers=$DBHOST \
 	--set dbhost_vets=$DBHOST \
 	--set dbhost_visits=$DBHOST \
-	--values values.yaml \
+	--set dbname_visits=visitsdb \
+	--set dbuser_visits=admin \
+	--set dbname_customers=customersdb \
+	--set dbuser_customers=admin \
+	--set dbname_vets=vetsdb \
+	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
 echo
