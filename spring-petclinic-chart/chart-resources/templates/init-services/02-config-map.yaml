@@ -54,6 +54,7 @@ data:
 
     customers-service-id: http://customers-service.{{ .Values.namespace }}.svc.cluster.local:8080
     visits-service-id: http://visits-service.{{ .Values.namespace }}.svc.cluster.local:8080
+    vets-service-id: http://vets-service.{{ .Values.namespace }}.svc.cluster.local:8080
 
     spring:
       datasource:
