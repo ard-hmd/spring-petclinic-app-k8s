@@ -16,7 +16,7 @@ kubectl create secret generic customers-db-mysql --from-literal=mysql-root-passw
 kubectl create secret generic vets-db-mysql --from-literal=mysql-root-password=password --namespace $ENVIRONNMENT && \
 kubectl create secret generic visits-db-mysql --from-literal=mysql-root-password=password --namespace $ENVIRONNMENT
 
-helm install spring-resources chart-resources \
+helm upgrade --install spring-resources chart-resources \
 	--set namespace=$ENVIRONNMENT \
 	--set repository_prefix=michelnguyenfr \
 	--set dbhost_customers=$DBHOST \
@@ -33,7 +33,7 @@ helm install spring-resources chart-resources \
 echo "pause for 10sec for the resources to be online before deploying the microservices"
 sleep 10 
 
-helm install spring-api-gateway chart-api-gateway \
+helm upgrade --install spring-api-gateway chart-api-gateway \
 	--set namespace=$ENVIRONNMENT \
 	--set repository_prefix=michelnguyenfr \
 	--set dbhost_customers=$DBHOST \
@@ -47,7 +47,7 @@ helm install spring-api-gateway chart-api-gateway \
 	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
-helm install spring-customers chart-customers \
+helm upgrade --install spring-customers chart-customers \
 	--set namespace=$ENVIRONNMENT \
 	--set repository_prefix=michelnguyenfr \
 	--set dbhost_customers=$DBHOST \
@@ -61,7 +61,7 @@ helm install spring-customers chart-customers \
 	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 	
-helm install spring-vets chart-vets \
+helm upgrade --install spring-vets chart-vets \
 	--set namespace=$ENVIRONNMENT \
 	--set repository_prefix=michelnguyenfr \
 	--set dbhost_customers=customersdb.$DBHOST \
@@ -75,7 +75,7 @@ helm install spring-vets chart-vets \
 	--set dbuser_vets=admin \
 	-n $ENVIRONNMENT
 
-helm install spring-visits chart-visits \
+helm upgrade --install spring-visits chart-visits \
 	--set namespace=$ENVIRONNMENT \
 	--set repository_prefix=michelnguyenfr \
 	--set dbhost_customers=$DBHOST \
