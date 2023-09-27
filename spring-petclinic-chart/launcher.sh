@@ -16,7 +16,7 @@ kubectl create secret generic customers-db-mysql --from-literal=mysql-root-passw
 kubectl create secret generic vets-db-mysql --from-literal=mysql-root-password=password --namespace $ENVIRONNMENT && \
 kubectl create secret generic visits-db-mysql --from-literal=mysql-root-password=password --namespace $ENVIRONNMENT
 
-service_names = ('resources' 'api-gateway' 'customers' 'vets' 'visits')
+service_names=("resources" "api-gateway" "customers" "vets" "visits")
 
 for service_name in ${service_names[@]}
 do
